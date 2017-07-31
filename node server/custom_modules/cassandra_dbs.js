@@ -54,8 +54,12 @@ exports.authUserByUserAndPass = username => {
         reject(err);
       } else {
         let user = result.first();
-        delete user.password
-        resolve(user);
+        if (user) {
+          delete user.password
+          resolve(user);
+          return
+        }
+        resolve(false);
       }
     });
   });
