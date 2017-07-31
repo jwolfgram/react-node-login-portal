@@ -21,7 +21,7 @@ cassandraClient.connect(err => {
 
 exports.listAllUsers = () => {
   return new Promise((resolve, reject) => {
-    cassandraClient.execute("SELECT * FROM users", [], (err, result) => {
+    cassandraClient.eachRow("SELECT * FROM users", [], (err, result) => {
       if (err) {
         reject(err);
       } else {
@@ -33,34 +33,30 @@ exports.listAllUsers = () => {
 
 exports.addNewUser = (username, password, message) => {
   return new Promise((resolve, reject) => {
-    cassandraClient.execute(
-      "INSERT INTO users(username, password, message) VALUES(?,?,?)",
-      [username, password, message],
-      (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
+    cassandraClient.execute("INSERT INTO users(username, password, message) VALUES(?,?,?)", [
+      username, password, message
+    ], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
       }
-    );
+    });
   });
 };
 
 // Search by username filter
 
-exports.getUserByUsername = username => {
+exports.authUserByUserAndPass = username => {
   return new Promise((resolve, reject) => {
-    cassandraClient.execute(
-      "SELECT * FROM tasks WHERE username=?",
-      [username],
-      (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
+    cassandraClient.execute("SELECT * FROM users WHERE username=?", [username], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        let user = result.first();
+        delete user.password
+        resolve(user);
       }
-    );
+    });
   });
 };
