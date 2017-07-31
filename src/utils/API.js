@@ -28,7 +28,10 @@ export const authenticateUser = (username, password) => {
 };
 
 export const logout = () => {
-  return fetch(`api/logout`, {method: 'get'}).then((response) => {
+  return fetch(`api/logout`, {
+    method: 'get',
+    credentials: "same-origin"
+  }).then((response) => {
     if (response.status != 200) {
       response.text().then((err) => {
         throw err

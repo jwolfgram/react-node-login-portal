@@ -47,7 +47,25 @@ exports.addNewUser = (username, password, message) => {
 
 // Search by username filter
 
-exports.authUserByUserAndPass = username => {
+exports.authUserByUserAndPass = (username, password) => {
+  return new Promise((resolve, reject) => {
+    cassandraClient.execute("SELECT * FROM users WHERE username=?", [username], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        let user = result.first();
+        if (user && user.password === password) {
+          delete user.password
+          resolve(user);
+          return
+        }
+        resolve(false);
+      }
+    });
+  });
+};
+
+exports.authUserByUser = (username, password) => {
   return new Promise((resolve, reject) => {
     cassandraClient.execute("SELECT * FROM users WHERE username=?", [username], (err, result) => {
       if (err) {
@@ -55,11 +73,10 @@ exports.authUserByUserAndPass = username => {
       } else {
         let user = result.first();
         if (user) {
-          delete user.password
           resolve(user);
-          return
+        } else {
+          reject(false);
         }
-        resolve(false);
       }
     });
   });

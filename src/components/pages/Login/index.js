@@ -44,35 +44,37 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div className="center-div cardWhite">
-          <form className="form-horizontal">
-            <fieldset>
-              <legend>LOGIN</legend>
-              <div>
-                {this.state.authError}
-              </div>
-              <div className="form-group">
-                <div className="col-sm-12">
-                  <input ref="username" type="text" placeholder="Username" className="form-control input-md"/>
-                  <span className="help-block">Enter your username</span>
+      <div className="login-animate">
+        <div className="animated bounceInUp">
+          <div className="center-div cardWhite">
+            <form className="form-horizontal">
+              <fieldset>
+                <legend>LOGIN</legend>
+                <div>
+                  {this.state.authError}
                 </div>
-              </div>
-              <div className="form-group">
-                <div className="col-sm-12">
-                  <input ref="password" type="password" placeholder="********" className="form-control input-md"/>
-                  <span className="help-block">Enter your password</span>
+                <div className="form-group">
+                  <div className="col-sm-12">
+                    <input ref="username" type="text" placeholder="Username" className="form-control input-md"/>
+                    <span className="help-block">Enter your username</span>
+                  </div>
                 </div>
-              </div>
-              <div className="form-group">
-                <div className="col-sm-12 text-center">
-                  <button onClick={this.login} type="button" className="btn btn-primary">
-                    LOGIN
-                  </button>
+                <div className="form-group">
+                  <div className="col-sm-12">
+                    <input ref="password" type="password" placeholder="********" className="form-control input-md"/>
+                    <span className="help-block">Enter your password</span>
+                  </div>
                 </div>
-              </div>
-            </fieldset>
-          </form>
+                <div className="form-group">
+                  <div className="col-sm-12 text-center">
+                    <button onClick={this.login} type="button" className="btn btn-primary">
+                      LOGIN
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
     );

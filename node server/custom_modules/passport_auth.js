@@ -7,7 +7,7 @@ module.exports = passport => {
   });
 
   passport.deserializeUser((user, done) => {
-    cassDB.authUserByUserAndPass(user.username).then((user, err) => {
+    cassDB.authUserByUser(user.username).then((user, err) => {
       done(null, user);
     }).catch((err) => {
       done(err, false);
@@ -18,7 +18,7 @@ module.exports = passport => {
     usernameField: "username",
     passwordField: "password"
   }, function(username, password, done) {
-    cassDB.authUserByUserAndPass(username).then((user, err) => {
+    cassDB.authUserByUserAndPass(username, password).then((user, err) => {
       return done(null, user);
     }).catch((err) => {
       done(err, false);

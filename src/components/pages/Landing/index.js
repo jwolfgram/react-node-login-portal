@@ -36,6 +36,8 @@ class Landing extends Component {
       let quoteText = res.content.replace(/<\/?[^>]+(>|$)/g, "")
       let authorName = res.title
       this.setState({quoteText, authorName})
+    }).catch((err) => {
+      this.props.history.replace('/');
     })
   }
 
