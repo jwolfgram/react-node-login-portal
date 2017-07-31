@@ -1,0 +1,132 @@
+body {
+  font-family: sans-serif;
+  background-color: #ddd;
+  margin: 0;
+  margin-top: 70px;
+}
+
+@font-face {
+  font-family: 'Raleway-Bold'; /*a name to be used later*/
+  src: url('/fonts/Raleway-Bold.ttf') format('truetype'); /*URL to font*/
+}
+
+@font-face {
+  font-family: 'Raleway-SemiBold'; /*a name to be used later*/
+  src: url('/fonts/Raleway-SemiBold.ttf') format('truetype'); /*URL to font*/
+}
+
+.profile-picture {
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.75);
+  border: 4px solid #000;
+  margin: 0 auto;
+}
+
+.row-btn-margin > a > * {
+  margin-top: 5px;
+}
+
+.navbar {
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 0;
+}
+
+#nav-topdiv {
+  position: fixed;
+  background-color: #000;
+  margin-top: 100px;
+  top: -150px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+#navigation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 50px;
+  height: 0px;
+  z-index: 99;
+}
+
+.fixed-container {
+  position: absolute;
+  overflow-x: hidden;
+  padding-top: 80px;
+  top: 0px;
+  bottom: 0px;
+  left: 5px;
+  right: 5px;
+  height: 100%;
+}
+
+.center-btn {
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.card {
+  display: inline-block;
+  position: relative;
+  margin: 20px;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+.card-description {
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  z-index: 100;
+  margin-top: 220px;
+  padding: 5px;
+  overflow: hidden;
+  box-shadow: none;
+  padding-top: 40px;
+  font-family: Raleway-Bold;
+  font-size: 12pt;
+  vertical-align: bottom;
+}
+
+.card-description > * {
+  position: absolute;
+  bottom: 0px;
+  padding-top: 280px;
+  margin-bottom: 0px;
+  color: #000;
+  z-index: 100;
+  padding: 5px;
+  overflow: hidden;
+  box-shadow: none;
+  left: 5px;
+  font-size: 10pt;
+  vertical-align: bottom;
+}
+
+.btn {
+  padding: 7px 12px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: .3s ease-out;
+  border-radius: 4px;
+  vertical-align: middle;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: middle;
+}

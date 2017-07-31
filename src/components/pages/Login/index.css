@@ -1,0 +1,32 @@
+#google-login-btn {
+  width: 228px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.center-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+  padding: 10px;
+  width: 270px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.center-div > hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #000;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.cardWhite {
+  background-color: #fff;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75);
+}

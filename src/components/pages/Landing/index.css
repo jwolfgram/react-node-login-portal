@@ -1,0 +1,17 @@
+.quote-box {
+  margin: 0 auto;
+  border-radius: 1px;
+  background-color: rgb(0, 128, 256);
+  color: #fff;
+}
+
+.quote-box>blockquote {
+  margin-bottom: 5px;
+}
+
+.quote-box>cite {
+  display: inline-block;
+  float: right;
+  padding-right: 15px;
+  padding-bottom: 5px;
+}
