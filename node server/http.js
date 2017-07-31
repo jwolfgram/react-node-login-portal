@@ -25,8 +25,6 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(bodyParser.json())
 
 app.post(`${BASEURL}/auth`, passport.authenticate('local'), function(req, res, next) { //Authenticate endpoint we alwanys want open
@@ -38,11 +36,22 @@ app.post(`${BASEURL}/auth`, passport.authenticate('local'), function(req, res, n
 });
 
 app.get(`${BASEURL}/user`, passport.authenticate('local'), (req, res) => {
-  res.send(JSON.stringify("req.user"));
+  res.send(JSON.stringify(req.user));
 });
 
 app.get(`${BASEURL}/logout`, (req, res) => {
   req.logout();
+  res.status(200).end();
+});
+
+app.get(`${BASEURL}/getRandomQuote`, function(req, res) {
+  if (req.user) {
+    request("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", (err, response, body) => {
+      res.send(JSON.parse(body)[0]);
+    })
+  } else {
+    res.status(418).end();
+  }
 });
 
 http.listen(port, () => {

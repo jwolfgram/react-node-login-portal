@@ -3,11 +3,15 @@ var cassDB = require("./cassandra_dbs"),
 
 module.exports = passport => {
   passport.serializeUser((user, done) => {
-    done(null, user.username);
+    done(null, user);
   });
 
   passport.deserializeUser((user, done) => {
-    done(null, null);
+    cassDB.authUserByUserAndPass(user.username).then((user, err) => {
+      done(null, user);
+    }).catch((err) => {
+      done(err, false);
+    })
   });
 
   passport.use(new LocalStrategy({
