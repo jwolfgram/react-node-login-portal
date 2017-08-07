@@ -81,5 +81,3 @@ exports.authUserByUser = (username, password) => {
     });
   });
 };
-
-CREATE USER maidbot WITH PASSWORD 'maidbot1234' SUPERUSER;
